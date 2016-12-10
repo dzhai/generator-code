@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.github.dzhai.generator.mapper.TargetMapper" >
+<select id="selectColumns" parameterType="map" resultType="com.github.dzhai.generator.model.GenTableColumn">
+	SELECT 
+	  column_name AS name,
+	  CASE WHEN is_nullable='YES' THEN 1 ELSE 0 END AS isNull,
+	  data_type AS myBatisJdbcType,
+	  column_type AS jdbcType,
+	  CASE WHEN column_key = 'PRI'  THEN 1 ELSE 0 END AS isPk,
+	  column_comment AS comments 
+	FROM
+	  information_schema.columns 
+	WHERE 1=1 
+	  AND table_schema = #{tableSchema} 
+	  AND table_name = #{tableName}
+</select>
+<select id="selectTables" parameterType="map" resultType="com.github.dzhai.generator.model.GenTable">
+	SELECT
+	  table_name AS NAME,
+	  table_COMMENT  AS  comments
+	FROM 
+	  information_schema.tables
+    WHERE 1=1
+      and table_schema=#{tableSchema} 
+</select>
+</mapper>

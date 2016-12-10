@@ -1,0 +1,60 @@
+<script type="text/javascript">
+$(function(){
+	$('#tableSchema').bind('change',function(){
+		var tableSchema=$(this).val();
+		ajaxRequestFormData('/target/table','tableSchema='+tableSchema,function(data){
+			var html='<option value="">请选择表</option>';
+			console.log(data)
+			$.each(data,function(i,item){
+				html+='<option value="'+item.name+'">'+item.name+'：'+item.comments+'</option>';
+			});
+			$('#tableName').html(html);
+		})
+	});
+	$('#loadTableColumn').bind('click',function(){
+		var tableSchema=$('#tableSchema').val();
+		var tableName=$('#tableName').val();
+		ajaxRequestFormData('/target/column','tableSchema='+tableSchema+'&tableName='+tableName,function(data){
+			
+			$('#tableColumn').html(data);
+		})
+	});
+})
+</script>
+<div class="row">
+	<div class="col-xs-12">
+		<table id="selectTable" class="table table-bordered table-hover">
+			<tbody>
+				<tr>
+					<td width="160px;">数据库名</td>
+					<td>
+						<select name="tableSchema" id="tableSchema">
+							<option value="">请选择表</option>
+							<option value="autozi_sps">拆车件</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>表名</td>
+					<td>
+						<select name="tableName" id="tableName">
+							<option value="">请选择表</option>
+						</select>
+					</td>
+				</tr>
+			</tbody>
+			<tfoot>
+				<tr class="tfoot">
+					<td></td>
+					<td>
+						<button class="btn btn-primary btn-sm" id="loadTableColumn">加载表信息</button>
+					</td>
+				</tr>
+			</tfoot>
+		</table>
+	</div>	
+</div>
+<div class="row">
+	<div class="col-xs-12" id="tableColumn">
+	</div>
+</div>

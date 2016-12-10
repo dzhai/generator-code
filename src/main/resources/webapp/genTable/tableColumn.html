@@ -1,0 +1,40 @@
+<table class="table table-bordered table-hover">
+	<thead>
+		<tr>
+			<th>列名</th>
+			<th>说明</th>
+			<th>物理类型</th>
+			<th>Java类型</th>
+			<th>Java属性名称</th>
+			<th>主键</th>
+			<th>可空</th>
+			<th>插入</th>
+			<th>编辑</th>
+			<th>列表</th>
+			<th>查询</th>
+			<th>查询匹配方式</th>
+			<th>显示表单类型</th>
+			<th>排序</th>
+		</tr>
+	</thead>
+	<tbody>
+	<#list columns as item>
+		<tr>
+			<td>${item.name}</td>
+			<td>${item.comments}</td>
+			<td>${item.comments}</td>
+			<td>${item.jdbcType}</td>
+			<td>${item.javaField}</td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		</#list>
+	</tbody>
+</table>
