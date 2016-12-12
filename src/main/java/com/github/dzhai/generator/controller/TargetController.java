@@ -20,6 +20,14 @@ public class TargetController {
 	@Autowired
 	private ITargetService targetService;
 	
+	
+	
+	@RequestMapping("schema")
+	@ResponseBody
+	public List<String> tableSchema(){
+		return targetService.selectSchemas();
+	}
+	
 	@RequestMapping("table")
 	@ResponseBody
 	public List<GenTable> table(String tableSchema){

@@ -42,7 +42,7 @@ public class SqlUtils {
 			name = "String";
 			break;
 
-		case "INTEGER":
+		case "INT":
 			if(length==1){
 				name = "Boolean";
 			}else{
@@ -98,6 +98,7 @@ public class SqlUtils {
 			break;
 
 		default:
+			name = "String";
 			break;
 		}
 		return name;

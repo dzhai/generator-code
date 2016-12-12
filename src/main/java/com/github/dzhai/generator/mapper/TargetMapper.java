@@ -13,4 +13,7 @@ public interface TargetMapper {
 
 	public List<GenTable> selectTables(@Param("tableSchema") String tableSchema);
 	
+	public List<String> selectSchemas();
+	
+	
 }

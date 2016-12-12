@@ -24,4 +24,9 @@ public class TargetServiceImpl implements ITargetService {
 		return targetMapper.selectTables(tableSchema);
 	}
 
+	@Override
+	public List<String> selectSchemas() {
+		return targetMapper.selectSchemas();
+	}
+
 }

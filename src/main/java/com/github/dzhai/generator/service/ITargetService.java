@@ -9,4 +9,6 @@ public interface ITargetService {
 	public List<GenTableColumn> selectColumns(String tableSchema,String tableName);
 
 	public List<GenTable> selectTables(String tableSchema);
+		
+	public List<String> selectSchemas();
 }

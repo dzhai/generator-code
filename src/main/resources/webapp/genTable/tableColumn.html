@@ -21,19 +21,51 @@
 	<#list columns as item>
 		<tr>
 			<td>${item.name}</td>
-			<td>${item.comments}</td>
-			<td>${item.comments}</td>
+			<td><input value="${item.comments}"/></td>
 			<td>${item.jdbcType}</td>
 			<td>${item.javaField}</td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
+			<td>			   
+				<select name="">
+					<option value="String" <#if item.javaType=='String'>selected</#if>>String</option>
+					<option value="Long" <#if item.javaType=='Long'>selected</#if>>Long</option>
+					<option value="Integer" <#if item.javaType=='Integer'>selected</#if>>Integer</option>
+					<option value="Double" <#if item.javaType=='Double'>selected</#if>>Double</option>
+					<option value="Date" <#if item.javaType=='Date'>selected</#if>>Date</option>
+					<option value="BigDecimal" <#if item.javaType=='BigDecimal'>selected</#if>>BigDecimal</option>
+					<option value="Boolean" <#if item.javaType=='Boolean'>selected</#if>>Boolean</option>
+					<option value="Float" <#if item.javaType=='Float'>selected</#if>>Float</option>
+				</select>
+			</td>
+			<td>
+				<input type="checkbox" <#if item.isPk>checked</#if> />
+			</td>
+			<td><input type="checkbox" <#if item.isNull>checked</#if> /></td>
+			<td><input type="checkbox" <#if item.isInsert?? &&  item.isInsert>checked</#if> /></td>
+			<td><input type="checkbox" <#if item.isEdit?? &&  item.isEdit>checked</#if> /></td>
+			<td><input type="checkbox" <#if item.isList?? &&  item.isList>checked</#if> /></td>
+			<td><input type="checkbox" <#if item.isQuery?? &&  item.isQuery>checked</#if> /></td>
+			<td>
+			<select name="" >
+							<option value="=" title="">=</option>
+							<option value="!=" title="">!=</option>
+							<option value=">" title="">&gt;</option>
+							<option value=">=" title="">&gt;=</option>
+							<option value="<" title="">&lt;</option>
+							<option value="<=" title="">&lt;=</option>
+							<option value="like" title="">Like</option>
+							<option value="left_like" title="">Left Like</option>
+							<option value="right_like" title="">Right Like</option>
+					</select>
+			</td>
+			<td>
+			<select>
+							<option value="input" title="">单行文本</option>
+							<option value="textarea" title="">多行文本</option>
+							<option value="select" title="">下拉列表</option>
+							<option value="dateselect" title="">日期选择</option>
+					</select>
+			</td>
+			<td><input value="${item.sort!''}" style="width:50px;"/></td>
 		</tr>
 		</#list>
 	</tbody>

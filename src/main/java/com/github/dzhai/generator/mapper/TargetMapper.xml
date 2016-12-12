@@ -24,4 +24,7 @@
     WHERE 1=1
       and table_schema=#{tableSchema} 
 </select>
+<select id="selectSchemas" parameterType="string" resultType="string" >
+	SELECT schema_name as name FROM  SCHEMATA WHERE schema_name NOT IN ('test','tmp_data','mysql','information_schema','performance_schema')
+</select>
 </mapper>
